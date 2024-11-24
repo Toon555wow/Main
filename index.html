@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BONKHUB</title>
+    <!-- Prism.js CSS for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <style>
+        /* ----- Global Styles ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* ดำดุ */
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ----- Animations ----- */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes parallax {
+            0% {
+                background-position: center top;
+            }
+            100% {
+                background-position: center bottom;
+            }
+        }
+
+        /* ----- Navigation Bar ----- */
+        nav {
+            background-color: #1e1e1e;
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: #f2f2f2;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #00d1b2; /* เขียวสด */
+        }
+
+        /* ----- Header ----- */
+        header {
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), #121212), url('https://cdn.discordapp.com/attachments/1012194764063514699/1310262486729232474/Screenshot_2024-11-24-22-14-58-280_com.google.android.googlequicksearchbox-edit.jpg?ex=67449488&is=67434308&hm=e3fc184c557a3d83a44e7265f2a435f2dde9ec7fd29e9f7e8b0a0a42229c3f17&') no-repeat center/cover;
+            background-attachment: fixed;
+            background-size: cover;
+            animation: parallax 10s infinite alternate ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #01f85f;
+            text-shadow: 0 0 15px rgba(1, 248, 95, 0.7), 0 0 30px rgba(1, 248, 95, 0.5);
+        }
+        header p {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        header button {
+            background-color: #ffffff;
+            color: #121212;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        header button:hover {
+            background: linear-gradient(to right, #00d1b2, #01f85f);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        /* ----- Section Styles ----- */
+        section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        section h2 {
+            color: #01f85f;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            text-shadow: 0 0 10px #01f85f, 0 0 20px rgba(1, 248, 95, 0.5);
+        }
+
+        /* ----- Script Section ----- */
+        .code-box {
+            background-color: #1e1e1e;
+            border: 1px solid #00d1b2;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        .btn-copy {
+            margin-top: 20px;
+            background-color: #00d1b2;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn-copy:hover {
+            background: linear-gradient(to right, #00a991, #00d1b2);
+            color: #ffffff;
+        }
+
+        /* ----- Footer ----- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            margin-top: 50px;
+        }
+        footer a {
+            color: #01f85f;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #00d1b2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="home">
+        <div>
+            <h1>BONKHUB</h1>
+            <p>Enjoy with BONK HUB :) !</p>
+            <div class="button-group">
+                <button onclick="scrollToSection('#script')">Get Script</button>
+                <button onclick="scrollToSection('#contact')">Contact Us</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Script Section -->
+    <section id="script">
+        <h2>Script</h2>
+        <img src="https://cdn.discordapp.com/attachments/1012194764063514699/1310235162143100948/Screenshot_2024-11-14-02-35-34-897_com.google.android.youtube-edit.jpg?ex=67447b15&is=67432995&hm=28c60a79804f934fe4ce258dfcba82996d8722dd183496cc36a9f6016d3a779e&" alt="Script Section Banner" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
+        <div class="code-box">
+            <pre class="language-lua">
+<code>
+loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
+</code>
+            </pre>
+        </div>
+        <button class="btn-copy" onclick="copyCode()">Copy Script</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <section id="contact"></section>
+        <p>&copy; 2024 BONKHUB. All Rights Reserved.</p>
+        <a href="https://discord.gg/bonkhub" target="_blank">Discord</a>
+        <a href="https://youtube.com/@bonkhub-1?si=NhlgLkzr8-VTEPjm">YouTube</a>
+    </footer>
+
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        function copyCode() {
+            const code = document.querySelector('.code-box code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy: ' + err);
+            });
+        }
+
+        function scrollToSection(id) {
+            document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
