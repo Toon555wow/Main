@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BONKHUB</title>
     <!-- Prism.js CSS for Syntax Highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         /* ----- Global Styles ----- */
         * {
@@ -36,14 +40,6 @@
                 transform: translateY(0);
             }
         }
-        @keyframes parallax {
-            0% {
-                background-position: center top;
-            }
-            100% {
-                background-position: center bottom;
-            }
-        }
 
         /* ----- Navigation Bar ----- */
         nav {
@@ -67,7 +63,7 @@
             transition: color 0.3s;
         }
         nav ul li a:hover {
-            color: #00d1b2; /* เขียวสด */
+            color: #00d1b2;
         }
 
         /* ----- Header ----- */
@@ -75,8 +71,6 @@
             height: 100vh;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), #121212), url('bright-pop-landscape-design.jpg') no-repeat center/cover;
             background-attachment: fixed;
-            background-size: cover;
-            animation: parallax 10s infinite alternate ease-in-out;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -103,17 +97,18 @@
         header button {
             background-color: #ffffff;
             color: #121212;
-            border: none;
             padding: 15px 30px;
             font-size: 1.1rem;
-            cursor: pointer;
+            border: 2px solid #00d1b2;
             border-radius: 30px;
-            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 0 10px rgba(0, 209, 178, 0.5);
+            transition: all 0.3s ease;
         }
         header button:hover {
             background: linear-gradient(to right, #00d1b2, #01f85f);
             color: #ffffff;
             transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 209, 178, 0.7), 0 0 30px rgba(0, 209, 178, 0.5);
         }
 
         /* ----- Section Styles ----- */
@@ -131,8 +126,6 @@
             animation: fadeIn 1s ease-in-out;
             text-shadow: 0 0 10px #01f85f, 0 0 20px rgba(1, 248, 95, 0.5);
         }
-
-        /* ----- Script Section ----- */
         .code-box {
             background-color: #1e1e1e;
             border: 1px solid #00d1b2;
@@ -172,9 +165,107 @@
         footer a:hover {
             color: #00d1b2;
         }
+        
+        
+        a {
+            color: #ffa500;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Section: Executor */
+        #executor {
+            padding: 50px 20px;
+            background-color: #121212;
+            border-bottom: 2px solid #444;
+        }
+        #executor h1 {
+            color: #01f85f;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            text-shadow: 0 0 10px #01f85f, 0 0 20px rgba(1, 248, 95, 0.5);
+        }
+        .executor-category {
+            margin-bottom: 40px;
+        }
+        .executor-category h2 {
+            font-size: 1.8rem;
+            color: #01f85f;
+            margin-bottom: 15px;
+        }
+        .executor-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .executor-list li {
+            margin: 10px 0;
+        }
+
+        /* Section: Map Stats */
+        #map-stats {
+            padding: 50px 20px;
+            background-color: #121212;
+            color: #ffffff;
+            border-top: 2px solid #01f85f;
+        }
+        #map-stats h2 {
+            color: #01f85f;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            text-shadow: 0 0 10px #01f85f, 0 0 20px rgba(1, 248, 95, 0.5);
+        }
+        .map-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        .map-list li {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #444;
+            padding: 5px 0;
+        }
+        .map-list .status {
+            font-size: 1.2rem;
+            color: #01f85f; /* Green for active status */
+        }
+
+        /* ----- Particles.js ----- */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
     </style>
 </head>
 <body>
+    <!-- Particles.js Background -->
+    <div id="particles-js"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#script"><i class="fas fa-code"></i> Script</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+
     <!-- Header -->
     <header id="home">
         <div>
@@ -189,12 +280,70 @@
 
     <!-- Script Section -->
     <section id="script">
-        <h2>Script</h2>
-        <img src="ggg.jpg" alt="Script Section Banner" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
-        <div class="code-box">
+        <h2 data-aos="fade-up">Script</h2>
+        <img data-aos="fade-left" src="ggg.jpg" alt="Script Section Banner" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
+        <div class="code-box" data-aos="zoom-in">
             <pre class="language-lua"><code>loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()</code></pre>
         </div>
-        <button class="btn-copy" onclick="copyCode()">Copy Script</button>
+        <button class="btn-copy" data-aos="fade-right" onclick="copyCode()">Copy Script</button>
+    </section>
+
+    <section id="map-stats">
+        <h2 data-aos="fade-up">Map status</h2>
+        <ul class="map-list">
+            <li data-aos="fade-right">Anime Dimensions <span class="status">🟢</span></li>
+            <li data-aos="fade-left">Zombie Attack <span class="status">🟢</span></li>
+            <li data-aos="fade-right">Meme Sea <span class="status">🟢</span></li>
+            <li data-aos="fade-left">Da Hood <span class="status">🟢</span></li>
+            <li data-aos="fade-right">Lucky Block <span class="status">🟢</span></li>
+            <li data-aos="fade-left">Driving Empire <span class="status">🟢</span></li>
+            <li data-aos="fade-right">Build A Boat <span class="status">🟢</span></li>
+            <li data-aos="fade-left">Legend Of Speed <span class="status">🟢</span></li>
+            <li data-aos="fade-right">Drive World <span class="status">🟢</span></li>
+            <li data-aos="fade-left">Blade Ball <span class="status">🟢</span></li>
+            <li data-aos="fade-right">Arsenal <span class="status">🟢</span></li>
+            <li data-aos="fade-left">Dungeon RNG <span class="status">🟢</span></li>
+            <li data-aos="fade-right">RNG Odyssey <span class="status">🟢</span></li>
+            <li data-aos="fade-left">Fisch <span class="status">🟢</span></li>
+        </ul>
+    </section>
+    <section id="executor">
+        <h1 data-aos="fade-up">Executor</h1>
+        
+        <div class="executor-category">
+            <h2 data-aos="fade-right">Windows</h2>
+            <ul class="executor-list" data-aos="zoom-in"><center>
+                <li><a href="https://getwave.gg/" target="_blank">Wave</a></li>
+                <li><a href="https://synapsez.net/" target="_blank">Synapse Z</a></li>
+                <li><a href="https://nihon.lol/" target="_blank">Nihon</a></li>
+                <li><a href="https://ryos.ws/" target="_blank">Xeno</a></li>
+                <li><a href="https://www.mediafire.com/folder/ba3i4rbiqy7lh/solara" target="_blank">Solara</a></li>
+                <li><a href="https://celeryexecutor.com/" target="_blank">Celery [DLL]</a></li>
+                <li><a href="https://spdteam.com/index?os=windows" target="_blank">Arceus X</a></li>
+                <li><a href="https://delta-executor.com/delta-executor-pc/" target="_blank">Delta</a></li>
+            </center></ul>
+        </div>
+        
+        <div class="executor-category">
+            <h2 data-aos="fade-right">Android</h2>
+            <ul class="executor-list" data-aos="zoom-in"><center>
+                <li><a href="https://spdteam.com/" target="_blank">Arceus X</a></li>
+                <li><a href="https://delta-executor.com/deltaexploits/" target="_blank">Delta</a></li>
+                <li><a href="https://fluxus-team.net/download/" target="_blank">Fluxus</a></li>
+                <li><a href="https://codex.lol/android" target="_blank">CodeX</a></li>
+            </center></ul>
+        </div>
+        
+        <div class="executor-category">
+            <h2 data-aos="fade-right">iOS</h2>
+            <ul class="executor-list" data-aos="zoom-in"><center>
+                <li><a href="" target="_blank">Apple Ware</a></li>
+                <li><a href="https://delta-executor.com/ios/" target="_blank">Delta</a></li>
+                <li><a href="https://cubixexecutor.com/" target="_blank">Cubix</a></li>
+                <li><a href="https://spdteam.com/index?os=ios" target="_blank">Arceus X</a></li>
+                <li><a href="https://codex.lol/ios" target="_blank">CodeX</a></li>
+            </center></ul>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -202,15 +351,33 @@
         <section id="contact"></section>
         <p>&copy; 2024 BONKHUB. All Rights Reserved.</p>
         <a href="https://discord.gg/bonkhub" target="_blank">Discord</a>
-        <a href="https://youtube.com/@bonkhub-1?si=NhlgLkzr8-VTEPjm">YouTube</a>
+        <a href="https://youtube.com/@bonkhub-1">YouTube</a>
     </footer>
 
     <!-- Prism.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-lua.min.js"></script>
 
-    <!-- JavaScript -->
+    <!-- AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        AOS.init();
+    </script>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100 },
+                color: { value: "#01f85f" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5 },
+                size: { value: 5 },
+                move: { enable: true, speed: 3 }
+            }
+        });
+
         function copyCode() {
             const code = document.querySelector('.code-box code').innerText;
             navigator.clipboard.writeText(code).then(() => {
@@ -226,3 +393,4 @@
     </script>
 </body>
 </html>
+
