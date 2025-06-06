@@ -331,6 +331,135 @@
             margin-top: 5px;
         }
         
+        /* Map List Styles - Updated */
+        .map-item {
+            background: rgba(1, 248, 95, 0.05);
+            border: 1px solid rgba(1, 248, 95, 0.2);
+            border-radius: 6px;
+            padding: 12px 15px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .map-item:hover {
+            background: rgba(1, 248, 95, 0.1);
+            border-color: rgba(1, 248, 95, 0.4);
+            transform: translateY(-1px);
+        }
+        
+        .map-name {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .map-status {
+            width: 12px;
+            height: 12px;
+            background: #01f85f;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(1, 248, 95, 0.5);
+            flex-shrink: 0;
+        }
+        
+        /* Enhanced Dropdown Button Styles */
+        .dropdown-toggle {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(1, 248, 95, 0.15) 0%, rgba(0, 209, 178, 0.15) 100%);
+            border: 1px solid rgba(1, 248, 95, 0.4);
+            color: #01f85f;
+            padding: 16px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(1, 248, 95, 0.1);
+        }
+        
+        .dropdown-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(1, 248, 95, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .dropdown-toggle:hover::before {
+            left: 100%;
+        }
+        
+        .dropdown-toggle:hover {
+            background: linear-gradient(135deg, rgba(1, 248, 95, 0.25) 0%, rgba(0, 209, 178, 0.25) 100%);
+            border-color: rgba(1, 248, 95, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(1, 248, 95, 0.2);
+        }
+        
+        .dropdown-toggle:active {
+            transform: translateY(0px);
+            box-shadow: 0 4px 15px rgba(1, 248, 95, 0.15);
+        }
+        
+        .dropdown-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .dropdown-icon {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(45deg, #01f85f, #00d1b2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #000;
+            box-shadow: 0 2px 8px rgba(1, 248, 95, 0.3);
+        }
+        
+        .dropdown-text {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .dropdown-arrow {
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-size: 1.1rem;
+            color: #01f85f;
+            filter: drop-shadow(0 0 4px rgba(1, 248, 95, 0.5));
+        }
+        
+        .dropdown-toggle.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-counter {
+            background: rgba(1, 248, 95, 0.2);
+            color: #01f85f;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(1, 248, 95, 0.3);
+        }
+                
         /* Game List */
         .game-list {
             display: grid;
@@ -661,6 +790,42 @@
                         <div style="font-size: 0.8rem; color: #01f85f; font-weight: 600;">Auto-Update</div>
                     </div>
                 </div>
+                <!-- Map List - Collapsible -->
+                <div style="margin: 20px 0;">
+                    <button onclick="toggleMapList()" class="dropdown-toggle" id="dropdownBtn">
+                        <div class="dropdown-content">
+                            <div class="dropdown-icon">🎮</div>
+                            <span class="dropdown-text">View Supported Games</span>
+                            <span class="dropdown-counter">20+</span>
+                        </div>
+                        <i class="fas fa-chevron-down dropdown-arrow" id="mapToggleIcon"></i>
+                    </button>
+                    <div id="mapList" style="display: none; margin-top: 15px; background: rgba(0, 0, 0, 0.3); border-radius: 8px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.1); max-height: 300px; overflow-y: auto;">
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
+                            <div class="map-item"><span class="map-name">💥 Anime Dimensions</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🧟 Zombie Attack</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">😂 Meme Sea</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🔥 Da Hood</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🎲 Lucky Block</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🚗 Driving Empire</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🛶 Build A Boat</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">⚡ Legend Of Speed</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🛣️ Drive World</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">⚔️ Blade Ball</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🔫 Arsenal</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🏰 Dungeon RNG</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🎲 RNG Odyssey</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🐟 Fisch</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🏖️ Seaside</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🔫 Gun Grounds FFA</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🎣 GO FISHING</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🏴‍☠️ Blox Fruits</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">💰 Lootify</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🪿 Beaks</span><div class="map-status"></div></div>
+                            <div class="map-item"><span class="map-name">🌱 Grow a Garden</span><div class="map-status"></div></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Server Stats -->
@@ -840,6 +1005,32 @@
             }).catch(err => {
                 alert('Failed to copy: ' + err);
             });
+        }
+        
+        // Toggle map list visibility
+        function toggleMapList() {
+            const mapList = document.getElementById('mapList');
+            const icon = document.getElementById('mapToggleIcon');
+            
+            if (mapList.style.display === 'none' || mapList.style.display === '') {
+                mapList.style.display = 'block';
+                icon.style.transform = 'rotate(180deg)';
+                // Smooth slide down animation
+                mapList.style.opacity = '0';
+                mapList.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    mapList.style.transition = 'all 0.3s ease';
+                    mapList.style.opacity = '1';
+                    mapList.style.transform = 'translateY(0)';
+                }, 10);
+            } else {
+                mapList.style.opacity = '0';
+                mapList.style.transform = 'translateY(-10px)';
+                icon.style.transform = 'rotate(0deg)';
+                setTimeout(() => {
+                    mapList.style.display = 'none';
+                }, 300);
+            }
         }
 
         // Smooth scroll to top
