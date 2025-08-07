@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/join/*"
+  from = "/joinserver/*"
   to = "/.netlify/functions/join"
   status = 200
